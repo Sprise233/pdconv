@@ -1,0 +1,65 @@
+#-*-coding:utf-8-*-
+dataset:
+  dataset_name_or_id: "2"  # 数据集的名称或ID
+  fold: 0  # 交叉验证的折数，通常用于K折交叉验证
+  use_compressed: false  # 是否使用压缩格式的数据集
+
+training:
+  trainer: Trainer  # 训练器的类型，定义了如何训练模型 {Trainer, TrainerStatic}
+  plans: PDCNWithPDCDWithPDFMPlans  # 训练计划，定义了网络结构、数据预处理等{ nnUNetPlans, nnUNetResEncUNetPlans, nnUnetWithPdconvPlans, PDCNPlans, PDCNWithPDCDPlans, PDCNWithPDCDWithPDFMPlans, UNETRPlans, TransBTSPlans, SwinUNETRPlans, nnFormerPlans, UX_NetPlans, MedNeXtMPlans, TransBTSPlans}
+  pretrained_weights: null  # 预训练权重的路径，如果为 null 则不使用预训练模型
+  gpu_index: 0 # 使用的gpu号
+  initial_lr: 0.01  # 初始学习率
+  weight_decay: 0.00003  # 权重衰减系数，用于正则化，防止过拟合
+  oversample_foreground_percent: 0.33  # 前景过采样比例，增加前景样本的数量
+  num_iterations_per_epoch: 250  # 每个训练周期的迭代次数
+  num_val_iterations_per_epoch: 1  # 每个验证周期的迭代次数
+  num_epochs: 200 # 总训练周期数
+  warm_up_epochs: 10 #暖化epoch数
+  current_epoch: 0  # 当前的训练周期数，用于继续训练时加载, 不为0则从检查点恢复
+  enable_deep_supervision: true  # 是否启用深度监督（多层次输出监督）
+  configuration: "3d_fullres"  # 配置类型，例如 3D 全分辨率配置{ 2d, 3d_fullres, 3d_lowres, 3d_cascade_lowres }
+  optimizer_type: "SGD"  # 优化器类型，可以是 SGD 或 AdamW
+  loss_type: #损失函数类型，{}
+  do_i_compile: false
+
+validation:
+  npz: false  # 是否将验证结果保存为 .npz 格式文件
+  only_validation: false   # 是否只运行验证，而不进行训练
+  validate_with_best_checkpoint: false  # 是否使用最佳检查点进行验证
+
+checkpointing:
+  disable_checkpointing: false  # 是否禁用检查点保存
+
+environment:
+  device: "cuda"  # 使用的设备类型（例如 GPU 的 'cuda' 或 CPU 的 'cpu'）
+
+  nnUNet_raw: "/home/imu_tlys1/ddn/nnUnet/data"
+  nnUNet_preprocessed: "/home/imu_tlys1/ddn/nnUnet/data/processed"
+  nnUNet_results: "/home/imu_tlys1/ddn/nnUnet/results"
+
+  nnUNet_def_n_proc: "4" # 进程数量
+
+#  nnUNet_raw: "D:/python_code/nnUnet/data"
+#  nnUNet_preprocessed: "D:/python_code/nnUnet/processed"
+#  nnUNet_results: "D:/python_code/nnUnet/results"
+
+
+# python main.py --fold 0;  python main.py --fold 1;  python main.py --fold 2;  python main.py --fold 3;  python main.py --fold 4;
+
+others:
+  save_file_name: 'train_4_1'
+
+
+#  nnUNet_raw: "/mnt/workspace/nnUnet/data"
+#  nnUNet_preprocessed: "/mnt/workspace/nnUnet/data/processed"
+#  nnUNet_results: "/mnt/workspace/nnUnet/results"
+#
+#  nnUNet_raw: "/home/cuiqi/model/nnUnet/data"
+#  nnUNet_preprocessed: "/home/cuiqi/model/nnUnet/data/processed"
+#  nnUNet_results: "/home/cuiqi/model/nnUnet/results"
+
+#  nnUNet_raw: "/home/imu_tlys1/ddn/nnUnet/data"
+#  nnUNet_preprocessed: "/home/imu_tlys1/ddn/nnUnet/data/processed"
+#  nnUNet_results: "/home/imu_tlys1/ddn/nnUnet/results"
+
