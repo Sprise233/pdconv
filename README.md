@@ -23,7 +23,6 @@ The framework supports full configurability via `config.yaml`, self-adapts to bo
 ### 1. Clone and Setup
 
 ```bash
-git clone https://github.com/Sprise233/PDC-Net.git
 cd PDC-Net
 ```
 
@@ -128,7 +127,6 @@ If you use PDC-Net in your research, please cite:
 @article{pdcnet2025,
   title={PDC-Net: A Parallel Decomposed Convolutional Network for Anisotropic Medical Image Segmentation},
   author={Sprise, Prise and Others},
-  journal={IEEE Transactions on Medical Imaging},
   year={2025}
 }
 ```
