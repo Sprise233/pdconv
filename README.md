@@ -64,7 +64,7 @@ training:
   oversample_foreground_percent: 0.33  # Percentage of foreground oversampling to increase foreground samples
   num_iterations_per_epoch: 250  # Number of iterations per training epoch
   num_val_iterations_per_epoch: 1  # Number of iterations per validation epoch
-  num_epochs: 200  # Total number of training epochs
+  num_epochs: 1000  # Total number of training epochs
   warm_up_epochs: 10  # Number of warm-up epochs
   current_epoch: 0  # Current epoch index (set > 0 for resuming from checkpoint)
   enable_deep_supervision: true  # Whether to enable deep supervision (multi-level output supervision)
@@ -84,9 +84,9 @@ checkpointing:
 environment:
   device: "cuda"  # Device to use ('cuda' for GPU or 'cpu')
 
-  nnUNet_raw: "/home/imu_tlys1/ddn/nnUnet/data"  # Path to raw data
-  nnUNet_preprocessed: "/home/imu_tlys1/ddn/nnUnet/data/processed"  # Path to preprocessed data
-  nnUNet_results: "/home/imu_tlys1/ddn/nnUnet/results"  # Path to save results
+  nnUNet_raw: "/home/ddn/nnUnet/data"  # Path to raw data
+  nnUNet_preprocessed: "/home/ddn/nnUnet/data/processed"  # Path to preprocessed data
+  nnUNet_results: "/home/ddn/nnUnet/results"  # Path to save results
 
   nnUNet_def_n_proc: "4"  # Number of processes to use
 
